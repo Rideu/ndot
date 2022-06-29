@@ -2,7 +2,7 @@
 
 DNS over [DoT](https://en.wikipedia.org/wiki/DNS_over_TLS) relay. Designed for DHCP-configurable routers that supports custom DNS servers.
 
-![](gitm/prev.PNG)
+![](gitm/prev.png)
 
 ## Features
  
