@@ -24,7 +24,7 @@ DNS over [DoT](https://en.wikipedia.org/wiki/DNS_over_TLS) relay. Designed for D
 | Отображение ответов | Выводит в консоль ответ DoT-cервера вида домен/IP-адрес |
 | Переопределяемый DoT-сервер (fork/lib-mode) | Возможность переопределения DoT-сервера разработчиком непосредственно |
 
-##References:
+## References:
 
 [^1]: Internet Engineering Task Force (IETF). RFC1035. DOMAIN NAMES - IMPLEMENTATION AND SPECIFICATION - https://datatracker.ietf.org/doc/html/rfc1035
 [^2]: Internet Engineering Task Force (IETF). RFC7858. Specification for DNS over Transport Layer Security (TLS) - https://datatracker.ietf.org/doc/html/rfc7858
