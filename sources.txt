@@ -1,0 +1,3 @@
+﻿1. The TCP/IP Guide [http://www.tcpipguide.com/]
+2. Internet Engineering Task Force (IETF). DOMAIN NAMES - IMPLEMENTATION AND SPECIFICATION https://datatracker.ietf.org/doc/html/rfc1035
+3. Internet Engineering Task Force (IETF). Specification for DNS over Transport Layer Security (TLS) https://datatracker.ietf.org/doc/html/rfc7858
