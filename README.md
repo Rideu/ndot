@@ -8,7 +8,7 @@ DNS over [DoT](https://en.wikipedia.org/wiki/DNS_over_TLS) relay. Designed for D
  
 | Feature | Description |
 | :----- | :------ |
-| DNS[^1] (port 53) to DoT[^2] conversion | Wraps and relays incoming DNS request towards DoT as per RFC1035 и RFC7858 |
+| DNS[^1] (port 53) to DoT[^2] conversion | Wraps and relays incoming DNS request towards DoT as per RFC1035 and RFC7858 |
 | Response display | Logs DoT responses as domain/IP-address |
 | Overridable DoT-server (fork/lib-mode) | Target DoT server can be overrided either in fork or lib mode |
 

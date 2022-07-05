@@ -5,4 +5,16 @@
     <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="ndotTests\**" />
+    <EmbeddedResource Remove="ndotTests\**" />
+    <None Remove="ndotTests\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="content\rawtest_monitoring.internet-measurement.com.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

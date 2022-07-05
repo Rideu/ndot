@@ -19,16 +19,16 @@ namespace ndot
     {
         static DoTConverter staticDoT;
         public static DoTConverter StaticInstance()
-        { 
+        {
             return (staticDoT = staticDoT ?? new DoTConverter());
         }
 
         TcpClient dnsClient = new TcpClient();
         SslStream ssl;
 
-        public void Open()
+        public void Open(int port = 53)
         {
-
+            this.port = port;
             connectToDoT();
 
             listenOne();
@@ -84,7 +84,7 @@ namespace ndot
                     connectionBlock.Set();
                 }
                 catch (AuthenticationException e)
-                { 
+                {
                     Log.LogMsgTag($"[DoTC]", $"Fail: Authentication failure ({e.GetExceptionRecur()})", ConsoleColor.Red, ConsoleColor.Gray);
                 }
                 catch (Exception e)
@@ -94,14 +94,17 @@ namespace ndot
             }
 
         }
+
         UdpClient lastClient;
+        int port = 53;
+
         Task listenOne()
         {
             var t = Task.Run(() =>
             {
 
                 var l = IPEndPoint.Parse("0.0.0.0");
-                l.Port = 53;
+                l.Port = port;
                 UdpClient udpListener = null;
                 try
                 {
@@ -135,7 +138,7 @@ namespace ndot
 
             return t;
         }
-         
+
 
         void OnMessage(byte[] raw, IPEndPoint remote, UdpClient udpListener)
         {
@@ -149,11 +152,11 @@ namespace ndot
                     udpListener.Close();
                     return;
                 }
-                 
+
                 Log.LogMsgTag($"[DoTC]", $"Incoming retransmisson", ConsoleColor.Green, ConsoleColor.Gray);
 
 
-                byte[] recv = new byte[512];
+                byte[] recv = new byte[1024 * 16];
                 var read = ssl.ReadAsync(recv, 0, recv.Length).ContinueWith<DnsResponse>((t) =>
                 {
 
@@ -198,7 +201,7 @@ namespace ndot
                                 }
                             }
                             catch (Exception e)
-                            { 
+                            {
                                 Log.LogMsgTag($"[DoTC]", $"Failed to parse response", ConsoleColor.Yellow, ConsoleColor.Gray);
                             }
                         }
@@ -209,7 +212,7 @@ namespace ndot
                             udpListener.Close();
                         }
 
-                        Log.LogMsgTag($"[DoTC]", $"Sending back...", ConsoleColor.Green, ConsoleColor.Gray);
+                        Log.LogMsgTag($"[DoTC]", $"Sending back...\r\n", ConsoleColor.Green, ConsoleColor.Gray);
 
 
                         return resp;

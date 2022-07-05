@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ndot": {
+      "commandName": "Project",
+      "commandLineArgs": "-dns 1.1.1.1"
+    }
+  }
+}

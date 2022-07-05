@@ -88,7 +88,7 @@ namespace ndot
             respFrame.isResponse = (raw[2] & 0b_1000_0000) == 128;
             respFrame.recursiveAvailable = (raw[3] & 0b_1000_0000) == 128;
 
-            var QCount = BitConverter.ToUInt16(new byte[2] { raw[5], raw[4] });
+            var QSCount = BitConverter.ToUInt16(new byte[2] { raw[5], raw[4] });
             var ANCount = BitConverter.ToUInt16(new byte[2] { raw[7], raw[6] });
             var NSCount = BitConverter.ToUInt16(new byte[2] { raw[9], raw[8] });
             var ARCount = BitConverter.ToUInt16(new byte[2] { raw[11], raw[10] });
@@ -98,7 +98,7 @@ namespace ndot
             var buf = "";
             byte qoffset = (byte)i;
 
-            if (QCount > 0)
+            if (QSCount > 0)
                 while (true)
                 {
                     var len = raw[i];
@@ -115,7 +115,7 @@ namespace ndot
                         buf = "";
                         i += 4;
                         qoffset = (byte)i;
-                        if (questions.Count == QCount)
+                        if (questions.Count == QSCount)
                             break;
                         else continue;
                     }
